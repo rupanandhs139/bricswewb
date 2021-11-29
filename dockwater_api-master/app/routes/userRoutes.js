@@ -1,0 +1,10 @@
+const router = require('express').Router();
+var user = require('../controllers/userController');
+const UserValidation = require('../config/uservalidation');
+router.post('/user/login', user.login);
+router.post('/user/profile',UserValidation.userAuthorized, user.profile);
+router.post('/user/verify', user.verify);
+router.post('/updateProfile',UserValidation.userAuthorized, user.updateProfile);
+router.post('/sendNotification', user.sendNotification);
+router.post('/user/resendOtp', user.resendOtp);
+module.exports = router;
